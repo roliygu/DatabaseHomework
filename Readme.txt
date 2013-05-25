@@ -10,10 +10,31 @@
 	3.用户子系统开发。
 
 开发环境与工具：
-	Python 2.7 ， MySQL 和 Git版本管理器。
+	Python 2.7 ， MySQL ，亿图图示专家和Git版本管理器。
+
+数据库结构：
+	分为三张table：
+	1.学生table，用于存储学生信息，包括
+		学号		varchar(7)    
+		姓名		varchar(20)
+		专业		varchar(20)
+		primary key (学号)；
+	2.take-table，这个是学生table和课程table的链接表。包括，
+		成绩		numeric(3,0)
+		学号		varchar(7)
+		课程号  	varchar(8)
+		年份		numeric(4,0)
+		primary key （学号，课程号，年份）；	
+	3.课程table，用于存储课程信息，包括，
+		课程号		varchar(8)	
+		课程名		varchar(20)
+		课程专业 	varchar(20)
+		primary key （课程号）；
 
 第一阶段：
-	起于24日8点，熟悉Python和MySQL的交互
+	起于24日20点，熟悉Python和MySQL的交互
 第二阶段：
 	起于25日15点，设计数据库并测试
+第三阶段：
+	起于25日16.20，设计用户子系统
 	
