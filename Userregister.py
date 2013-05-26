@@ -12,6 +12,7 @@ def makedic():
         t = i.split(' ')
         dic_x={t[0]:[t[1],t[2]]}
         dic.update(dic_x)
+    user_text.close()
     return dic
 
 def checkcode():
@@ -24,25 +25,36 @@ def checkcode():
     
 def main():
     k=input("Had an username(1) or no(2) or quit(3)?:")
-    if k == 3:
-        return 0
-    elif k == 1:
-        name=raw_input("what is your username? :")
-        code=raw_input("what is your password? :")
-        d=makedic()
-        co=d.get(name)[0]
-        if co!=None and decode(co)==code:
-            return 1
-        else:
-            print "your username or password is error!"
-            main()
-    elif k==2:
-        newcode=check()
-        if newcode == 0:
-            print "your two times inputs are different!please try it again"
-            newcode=check()
-        else:
-            s=
-            
-        
+    while k==1 or k==2 or k==3:
+        if k == 3:
+            return 0
+        elif k==1:
+            name=raw_input("what is your username? :")
+            code=raw_input("what is your password? :")
+            d=makedic()
+            co=d.get(name)[0]
+            if co!=None and decode(co)==code:
+                return 1
+            else:
+                print "your username or password is error!"
+                k=input("Had an username(1) or no(2) or quit(3)?:")
+        elif k==2:
+            newusername=raw_input("please input your new userneme : ")
+            newcode=checkcode()
+            if newcode == 0:
+                print "your two times inputs are different!please try it again"
+                newcode=checkcode()
+            else:
+                s=passwordCreate(newcode)
+                out = open('G:\DatabaseHomework\Userlist.txt','a+')
+                out.write(newusername)
+                out.write(" ")
+                out.write(s)
+                out.write(" ")
+                out.write("0000000")
+                out.write('\n')
+                out.close()
+                print "Create successfully!"
+            k=input("Had an username(1) or no(2) or quit(3)?:")
+
         

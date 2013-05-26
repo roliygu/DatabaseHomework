@@ -17,13 +17,24 @@ def show(coursor):
 	for row in a:
 		print(row)
 
-
+def SQLCarryout(s):
+	if len(s)<5:
+		print "SQLinput is illegality!"
+	else:
+		cou=conn.cursor()
+		cou.execute(s)
+		return cou
+	
 def SQL():
-	coursor=conn.cursor()
 	s=SQLinput()
-	if coursor.execute(s) != 0:
-		show(coursor)
-	coursor.close()
+	cu=SQLCarryout(s)
+	show(cu)
+	
+def SQLcreate():
+	SQL_text = open('G:\DatabaseHomework\datacreate.txt','r')
+	SQLcre = SQL_text.readlines()
+	for i in SQLcre:
+		SQLCarryout(i)
 
 SQL()
 x=input("a")

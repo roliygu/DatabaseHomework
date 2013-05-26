@@ -2,8 +2,7 @@
 #coding=utf-8
 import random
 
-def passwordCreate():
-    a=raw_input('input your password:')
+def passwordCreate(a):
     t=random.randint(2,9)
     B=str(t)
     for i in a:

@@ -2,4 +2,8 @@
 #coding=utf-8
 import sys
 sys.path+=["G:\DatabaseHomework"]
-from Code import *
+import Userregister
+import database
+def main():
+    t=Userregister.main()
+    
