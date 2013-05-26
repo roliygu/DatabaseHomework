@@ -3,7 +3,6 @@
 import os
 import MySQLdb
 conn = MySQLdb.Connect(user='root',passwd='KF.moon083166139339',db='text')
-coursor=conn.cursor()
 
 def SQLinput():
 	s=raw_input('>>')
@@ -24,6 +23,7 @@ def SQL():
 	s=SQLinput()
 	if coursor.execute(s) != 0:
 		show(coursor)
+	coursor.close()
 
 SQL()
 x=input("a")
