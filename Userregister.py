@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 #coding=utf-8
 import sys
+import getpass
 sys.path+=["G:\DatabaseHomework"]
 from Code import *
 
@@ -16,8 +17,8 @@ def makedic():
     return dic
 
 def checkcode():
-    fir_code=raw_input("please input your password first : ")
-    sec_code=raw_input("please input your password second : ")
+    fir_code=getpass.getpass("please input your password first : ")
+    sec_code=getpass.getpass("please input your password second : ")
     if fir_code==sec_code:
         return fir_code
     else:
@@ -30,7 +31,7 @@ def main():
             return 0
         elif k==1:
             name=raw_input("what is your username? :")
-            code=raw_input("what is your password? :")
+            code=getpass.getpass("what is your password? :")
             d=makedic()
             co=d.get(name)[0]
             if co!=None and decode(co)==code:
@@ -57,4 +58,4 @@ def main():
                 print "Create successfully!"
             k=input("Had an username(1) or no(2) or quit(3)?:")
 
-        
+main()
