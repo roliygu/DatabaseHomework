@@ -1,0 +1,5 @@
+create database student_takes;
+use student_takes;
+create table student (ID    varchar(7),name    varchar(20),major    varchar(20),primary key (ID));
+create table takes (grade    numeric(3,0),ID    varchar(7),course_ID    varchar(7),years    numeric(4,0),primary key (ID,course_ID,years));
+create table course(course_ID    varchar(7),name    varchar(20),major    varchar(20),primary key (course_ID));
