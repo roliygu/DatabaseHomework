@@ -74,6 +74,21 @@ def Add_one(gra,ID,course_ID,yea):
 	conn.commit()
 	return n
 
+def Add_oneclass(course_ID,name,major):
+	ex=('course',course_ID,name,major)
+	sql="insert into %s values (%s,'%s','%s');" % ex
+	cou=conn.cursor()
+	n=cou.execute(sql)
+	conn.commit()
+	return 1
+
+def Add_onestudent(ID,name,major):
+	ex=('student',ID,name,major)
+	sql="insert into %s values (%s,'%s','%s');" % ex
+	cou=conn.cursor()
+	n=cou.execute(sql)
+	conn.commit()
+	return 1
 
 def Add_mul(L):
 	for i in L:
@@ -99,3 +114,21 @@ def get_all(ex_yea,ex_course_id):
 	cous=SQLCarryout(sql)
 	a=cous.fetchall()
 	return a	
+
+def get_allclassID():
+	sql="select * from course;"
+	cous=SQLCarryout(sql)
+	a=cous.fetchall()
+	L=[]
+	for i in a:
+		L.append(i[0])
+	return L	
+
+def get_allstudentID():
+	sql="select * from student;"
+	cous=SQLCarryout(sql)
+	a=cous.fetchall()
+	L=[]
+	for i in a:
+		L.append(i[0])
+	return L	

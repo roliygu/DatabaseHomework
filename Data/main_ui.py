@@ -26,6 +26,21 @@ except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
 
+class Ui_ex_windows2(object):
+    def setupUi(self, ex_windows2):
+        ex_windows2.setObjectName(_fromUtf8("ex_windows2"))
+        ex_windows2.resize(354, 107)
+        self.label = QtGui.QLabel(ex_windows2)
+        self.label.setGeometry(QtCore.QRect(70, 30, 221, 41))
+        self.label.setObjectName(_fromUtf8("label"))
+
+        self.retranslateUi(ex_windows2)
+        QtCore.QMetaObject.connectSlotsByName(ex_windows2)
+
+    def retranslateUi(self, ex_windows2):
+        ex_windows2.setWindowTitle(_translate("ex_windows2", "警告", None))
+        self.label.setText(_translate("ex_windows2", "请确定“年份”和“课程编码”已填写！！", None))
+
 class Ui_ex_windows(object):
     def setupUi(self, ex_windows):
         ex_windows.setObjectName(_fromUtf8("ex_windows"))
@@ -40,6 +55,176 @@ class Ui_ex_windows(object):
     def retranslateUi(self, ex_windows):
         ex_windows.setWindowTitle(_translate("ex_windows", "Form", None))
         self.label.setText(_translate("ex_windows", "       添加成功！", None))
+
+class Ui_Sudent_form(object):
+    def setupUi(self, Sudent_form):
+        Sudent_form.setObjectName(_fromUtf8("Sudent_form"))
+        Sudent_form.resize(400, 158)
+        self.label = QtGui.QLabel(Sudent_form)
+        self.label.setGeometry(QtCore.QRect(20, 20, 381, 16))
+        self.label.setObjectName(_fromUtf8("label"))
+        self.widget = QtGui.QWidget(Sudent_form)
+        self.widget.setGeometry(QtCore.QRect(100, 50, 189, 74))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.gridLayout = QtGui.QGridLayout(self.widget)
+        self.gridLayout.setMargin(0)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.label_StudentNo = QtGui.QLabel(self.widget)
+        self.label_StudentNo.setObjectName(_fromUtf8("label_StudentNo"))
+        self.gridLayout.addWidget(self.label_StudentNo, 0, 0, 1, 1)
+        self.lineEdit_studentNo = QtGui.QLineEdit(self.widget)
+        self.lineEdit_studentNo.setObjectName(_fromUtf8("lineEdit_studentNo"))
+        self.gridLayout.addWidget(self.lineEdit_studentNo, 0, 1, 1, 2)
+        self.label_StudentName = QtGui.QLabel(self.widget)
+        self.label_StudentName.setObjectName(_fromUtf8("label_StudentName"))
+        self.gridLayout.addWidget(self.label_StudentName, 1, 0, 1, 1)
+        self.lineEdit_studentName = QtGui.QLineEdit(self.widget)
+        self.lineEdit_studentName.setObjectName(_fromUtf8("lineEdit_studentName"))
+        self.gridLayout.addWidget(self.lineEdit_studentName, 1, 1, 1, 2)
+        self.label_StudentSubject = QtGui.QLabel(self.widget)
+        self.label_StudentSubject.setObjectName(_fromUtf8("label_StudentSubject"))
+        self.gridLayout.addWidget(self.label_StudentSubject, 2, 0, 1, 2)
+        self.lineEdit_studentSubject = QtGui.QLineEdit(self.widget)
+        self.lineEdit_studentSubject.setObjectName(_fromUtf8("lineEdit_studentSubject"))
+        self.gridLayout.addWidget(self.lineEdit_studentSubject, 2, 2, 1, 1)
+        self.widget1 = QtGui.QWidget(Sudent_form)
+        self.widget1.setGeometry(QtCore.QRect(230, 130, 158, 25))
+        self.widget1.setObjectName(_fromUtf8("widget1"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.widget1)
+        self.horizontalLayout.setMargin(0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.pushButton = QtGui.QPushButton(self.widget1)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.pushButton_2 = QtGui.QPushButton(self.widget1)
+        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.line_studentSubject=""
+        self.line_studentNo=""
+        self.line_studentName=""
+        self.ex_windows = QtGui.QWidget()
+        self.ui = Ui_ex_windows()
+        self.ui.setupUi(self.ex_windows)
+        self.k=0
+        self.ui.label.setText(_translate("ex_windows", "   Student添加成功！", None))
+        
+        self.retranslateUi(Sudent_form)
+        QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), Sudent_form.close)
+        QtCore.QObject.connect(self.lineEdit_studentNo, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_studentNo)
+        QtCore.QObject.connect(self.lineEdit_studentSubject, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_studentSubject)
+        QtCore.QObject.connect(self.lineEdit_studentName, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_studentName)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.sure)
+        QtCore.QMetaObject.connectSlotsByName(Sudent_form)
+        
+    def sure(self):
+        if self.line_studentName is "" or self.line_studentNo is "" or self.studentSubject is"":
+            return 0
+        else :
+            self.k=Add_oneclass(self.line_classNo,self.line_className,self.line_classSubject)
+            self.ex_windows.show()
+    
+    def Sline_studentSubject(self):
+        self.line_studentSubject=self.lineEdit_studentSubject.text()
+    def Sline_studentNo(self):
+        self.line_studentNo=self.lineEdit_studentNo.text()
+    def Sline_studentName(self):
+        self.line_studentName=self.lineEdit_studentName.text()
+    
+        
+
+    def retranslateUi(self, Sudent_form):
+        Sudent_form.setWindowTitle(_translate("Sudent_form", "Add_Student", None))
+        self.label.setText(_translate("Sudent_form", "您输入的学号不存在，若想添加相关学生信息，请填写下列内容 ：", None))
+        self.label_StudentNo.setText(_translate("Sudent_form", "学号 ：", None))
+        self.label_StudentName.setText(_translate("Sudent_form", "姓名 ：", None))
+        self.label_StudentSubject.setText(_translate("Sudent_form", "专业 ：", None))
+        self.pushButton.setText(_translate("Sudent_form", "确定", None))
+        self.pushButton_2.setText(_translate("Sudent_form", "取消", None))
+
+class Ui_subject_from(object):
+    def setupUi(self, subject_from):
+        subject_from.setObjectName(_fromUtf8("subject_from"))
+        subject_from.resize(400, 159)
+        self.label = QtGui.QLabel(subject_from)
+        self.label.setGeometry(QtCore.QRect(10, 20, 381, 16))
+        self.label.setObjectName(_fromUtf8("label"))
+        self.widget = QtGui.QWidget(subject_from)
+        self.widget.setGeometry(QtCore.QRect(90, 50, 231, 74))
+        self.widget.setObjectName(_fromUtf8("widget"))
+        self.gridLayout = QtGui.QGridLayout(self.widget)
+        self.gridLayout.setMargin(0)
+        self.gridLayout.setObjectName(_fromUtf8("gridLayout"))
+        self.label_classNo = QtGui.QLabel(self.widget)
+        self.label_classNo.setObjectName(_fromUtf8("label_classNo"))
+        self.gridLayout.addWidget(self.label_classNo, 0, 0, 1, 1)
+        self.lineEdit_classNo = QtGui.QLineEdit(self.widget)
+        self.lineEdit_classNo.setObjectName(_fromUtf8("lineEdit_classNo"))
+        self.gridLayout.addWidget(self.lineEdit_classNo, 0, 1, 1, 2)
+        self.label_className = QtGui.QLabel(self.widget)
+        self.label_className.setObjectName(_fromUtf8("label_className"))
+        self.gridLayout.addWidget(self.label_className, 1, 0, 1, 1)
+        self.lineEdit_className = QtGui.QLineEdit(self.widget)
+        self.lineEdit_className.setObjectName(_fromUtf8("lineEdit_className"))
+        self.gridLayout.addWidget(self.lineEdit_className, 1, 1, 1, 2)
+        self.label_classSubject = QtGui.QLabel(self.widget)
+        self.label_classSubject.setObjectName(_fromUtf8("label_classSubject"))
+        self.gridLayout.addWidget(self.label_classSubject, 2, 0, 1, 2)
+        self.lineEdit_classSubject = QtGui.QLineEdit(self.widget)
+        self.lineEdit_classSubject.setObjectName(_fromUtf8("lineEdit_classSubject"))
+        self.gridLayout.addWidget(self.lineEdit_classSubject, 2, 2, 1, 1)
+        self.widget1 = QtGui.QWidget(subject_from)
+        self.widget1.setGeometry(QtCore.QRect(230, 130, 158, 25))
+        self.widget1.setObjectName(_fromUtf8("widget1"))
+        self.horizontalLayout = QtGui.QHBoxLayout(self.widget1)
+        self.horizontalLayout.setMargin(0)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.pushButton = QtGui.QPushButton(self.widget1)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.horizontalLayout.addWidget(self.pushButton)
+        self.pushButton_2 = QtGui.QPushButton(self.widget1)
+        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
+        self.horizontalLayout.addWidget(self.pushButton_2)
+        self.ex_windows = QtGui.QWidget()
+        self.ui = Ui_ex_windows()
+        self.ui.setupUi(self.ex_windows)
+        self.line_classNo=""
+        self.line_className=""
+        self.line_classSubject=""
+        self.k=0
+        self.ui.label.setText(_translate("ex_windows", "   Class添加成功！", None))
+        
+        self.retranslateUi(subject_from)
+        QtCore.QObject.connect(self.pushButton_2, QtCore.SIGNAL(_fromUtf8("clicked()")), subject_from.close)
+        QtCore.QObject.connect(self.lineEdit_classNo, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_classNo)
+        QtCore.QObject.connect(self.lineEdit_className, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_className)
+        QtCore.QObject.connect(self.lineEdit_classSubject, QtCore.SIGNAL(_fromUtf8("editingFinished()")), self.Sline_classSubject)
+        QtCore.QObject.connect(self.pushButton, QtCore.SIGNAL(_fromUtf8("clicked()")), self.sure)
+        QtCore.QMetaObject.connectSlotsByName(subject_from)
+    
+    def sure(self):
+        if self.line_className is "" or self.line_classNo is "" or self.line_classSubject is"":
+            return 0
+        else :
+            self.k=Add_oneclass(self.line_classNo,self.line_className,self.line_classSubject)
+            self.ex_windows.show()
+    def Sline_classNo(self):
+        self.line_classNo=self.lineEdit_classNo.text()
+    def Sline_className(self):
+        self.line_className=self.lineEdit_className.text()
+    def Sline_classSubject(self):
+        self.line_classSubject=self.lineEdit_classSubject.text()
+        
+    
+        
+
+    def retranslateUi(self, subject_from):
+        subject_from.setWindowTitle(_translate("subject_from", "Add_Newclass", None))
+        self.label.setText(_translate("subject_from", "您输入的课程编号不存在，若想添加相关课程信息，请在填写下列内容：", None))
+        self.label_classNo.setText(_translate("subject_from", "课程编号 ：", None))
+        self.label_className.setText(_translate("subject_from", "课程名称 ：", None))
+        self.label_classSubject.setText(_translate("subject_from", "课程所属专业 ：", None))
+        self.pushButton.setText(_translate("subject_from", "确定", None))
+        self.pushButton_2.setText(_translate("subject_from", "取消", None))
 
 class Ui_MyDatabase(object):
     def setupUi(self, MyDatabase):
@@ -210,8 +395,20 @@ class Ui_MyDatabase(object):
         self.ex_text=""
         
         self.ex_windows = QtGui.QWidget()
-        self.ui = Ui_ex_windows()
-        self.ui.setupUi(self.ex_windows)
+        self.ui1 = Ui_ex_windows()
+        self.ui1.setupUi(self.ex_windows)
+        
+        self.ex_windows2 = QtGui.QWidget()
+        self.ui2 = Ui_ex_windows2()
+        self.ui2.setupUi(self.ex_windows2)
+        
+        self.Sudent_form = QtGui.QWidget()
+        self.ui3 = Ui_Sudent_form()
+        self.ui3.setupUi(self.Sudent_form)
+        
+        self.subject_from = QtGui.QWidget()
+        self.ui4 = Ui_subject_from()
+        self.ui4.setupUi(self.subject_from)
         
         
         self.retranslateUi(MyDatabase)
@@ -247,30 +444,36 @@ class Ui_MyDatabase(object):
     def Sline_grade(self):
         self.line_grade=self.lineEdit_grade.text()
     def showup(self):
-            for x in range(0,31):
-                for y in range(0,5):
-                    item = QtGui.QTableWidgetItem(" ")
-                    self.tableWidget.setItem(x,y,item)
-            T=get_all(self.line_year,self.line_subjectName)
-            j=0
-            for i in T:
-                item = QtGui.QTableWidgetItem(T[j][0])
-                self.tableWidget.setItem(j,0,item)
+        if self.line_subjectName not in get_allclassID():
+            self.subject_from.show()
+            return 0
+        if self.line_year is "" or self.line_subjectName is "":
+            self.ex_windows2.show()
+            return 0
+        for x in range(0,31):
+            for y in range(0,5):
+                item = QtGui.QTableWidgetItem(" ")
+                self.tableWidget.setItem(x,y,item)
+        T=get_all(self.line_year,self.line_subjectName)
+        j=0
+        for i in T:
+            item = QtGui.QTableWidgetItem(T[j][0])
+            self.tableWidget.setItem(j,0,item)
                 
-                a=""
-                a=self.line_subjectName
-                item = QtGui.QTableWidgetItem(a)
-                self.tableWidget.setItem(j,1,item)
+            a=""
+            a=self.line_subjectName
+            item = QtGui.QTableWidgetItem(a)
+            self.tableWidget.setItem(j,1,item)
                 
-                c=str(T[j][1])
-                item = QtGui.QTableWidgetItem(c)
-                self.tableWidget.setItem(j,2,item)
+            c=str(T[j][1])
+            item = QtGui.QTableWidgetItem(c)
+            self.tableWidget.setItem(j,2,item)
                 
-                b=""
-                b=self.line_year
-                item = QtGui.QTableWidgetItem(b)
-                self.tableWidget.setItem(j,3,item)
-                j+=1
+            b=""
+            b=self.line_year
+            item = QtGui.QTableWidgetItem(b)
+            self.tableWidget.setItem(j,3,item)
+            j+=1
     
     def file_open(self):
         fd = QtGui.QFileDialog()
